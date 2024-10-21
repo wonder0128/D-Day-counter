@@ -21,5 +21,24 @@ export const designateGrade = function (students) {
     // 여기에서 작업하세요.
     const score = calculateAverage(students);
 
-    return;
+    let grade = '';
+    for(let studentScores of score){
+        let studentScore = studentScores.score;
+        
+        if(studentScore <= 100 && studentScore > 90){
+            grade = 'A';
+        } else if (studentScore > 80){
+            grade = 'B';
+        } else if (studentScore > 70) {
+            grade = 'C';
+        } else if (studentScore > 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        studentScores.grade = grade;
+    }
+
+    return score;
 };

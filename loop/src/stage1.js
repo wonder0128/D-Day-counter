@@ -18,22 +18,30 @@ export const calculateAverage = function (students) {
     // 여기에서 작업하세요.
     const scoreAverage = [];
 
-    let name = '';
-    let score = 0;
-
     for(let student in students){
         const studentInfo = students[student];
         const keys = Object.keys(studentInfo);
         
-        for(let info of keys){
-            if(info === 'name'){
-                name = studentInfo[info];
-                console.log(name)
+        let studentName = '';
+        let scoreArr = [];
+        let result = 0;
+
+        keys.forEach(key => {
+            if(key === 'name'){
+                studentName = studentInfo[key];
             } else {
-                console.log(studentInfo[info])
-                // score += studentInfo[info] / ;
+                scoreArr.push(studentInfo[key])
             }
-        }
+        })
+
+        scoreArr.forEach(score => {
+            result += score;
+        })
+        
+        scoreAverage.push({
+            name: studentName,
+            score : result / scoreArr.length
+        })    
     }
 
     return scoreAverage;
